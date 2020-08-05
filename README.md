@@ -1,2 +1,4 @@
 # application-deploy-with-docker
-front en javascript  Un backend en PHP ■ Une api gateway (nginx/traefik) pour répartir les requêtes
+Front en javascript  
+Backend en PHP 
+Api gateway (nginx/traefik)

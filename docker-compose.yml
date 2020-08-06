@@ -9,7 +9,7 @@ services:
     volumes:
       - "./frontend:/usr/share/nginx/html"
     labels:  
-      - "traefik.http.routers.frontend.rule=Host(frontend.docker.localhost)"
+      - "traefik.http.routers.frontend.rule=Host(`frontend.docker.localhost`)"
 
   backend:
     container_name: backend
@@ -19,12 +19,13 @@ services:
     volumes:
       - './backend:/var/www/html:cached'
     labels:  
-      - "traefik.http.routers.backend.rule=Host(backend.docker.localhost)"
+      - "traefik.http.routers.backend.rule=Host(`backend.docker.localhost`)"
 
   reverse-proxy:
     image: traefik:v2.2
     command: --api.insecure=true --providers.docker
     ports:
+      - "80:80"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
